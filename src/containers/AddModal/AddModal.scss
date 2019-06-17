@@ -1,0 +1,50 @@
+.modal {
+    // display: none;
+    width: 30%;
+    height: 20vh;
+    background-color: #59C173;
+    box-shadow: 1.5px 2px 3.5px rgba(0, 0, 0, .4);
+    padding: 3rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+
+    &__title {
+        font-size: 1.8rem;
+        text-align: center;
+        color: whitesmoke;
+        margin-bottom: 1.5rem;
+    }
+    
+    &__input {
+        padding: .5rem 1rem;
+        font-size: 1.6rem;
+        font-family: inherit;
+        display: block;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__btn {
+        cursor: pointer;
+        background-color: whitesmoke;
+        padding: 1rem 1.5rem;
+        color: #59C173;
+        font-size: 1.4rem;
+        font-family: inherit;
+        width: 100%;
+        border: none;
+        transition: all .3s;
+        outline: none;
+
+        &:hover {
+            background-color: darken(whitesmoke, 10%);
+        }
+
+    }
+}

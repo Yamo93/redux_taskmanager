@@ -1,0 +1,47 @@
+@import '../../utilities/variables.scss';
+
+.task {
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all .3s;
+    border-bottom: .5px solid rgba(0, 0, 0, .2);
+
+    &:hover .fa-check-square {
+        color: darken(#59C173, 10%);
+    }
+
+    &:hover {
+        background-color: darken(whitesmoke, 5%);
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        
+        .fa-check-square {
+            color: #59C173;
+            font-size: 3rem;
+            margin-right: 1.5rem;
+            transition: all .3s;
+        }
+    }
+
+    &__deletebtn {
+        cursor: pointer;
+        margin-left: auto;
+        background-color: $red;
+        font-size: 1.4rem;
+        font-family: inherit;
+        color: $white;
+        padding: .5rem 2rem;
+        border: none;
+        box-shadow: .5px 1px 1.5px rgba(0, 0, 0, .4);
+        transition: all .3s;
+
+        &:hover {
+            background-color: darken($red, 10%);
+        }
+    }
+}

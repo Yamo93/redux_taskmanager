@@ -1,0 +1,22 @@
+@import '../../utilities/variables.scss';
+
+.message {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 4rem;
+    background-color: $green;
+    color: $white;
+    width: 70%;
+    padding: 2rem 3rem;
+    z-index: 20;
+    box-shadow: rgba(0, 0, 0, .3);
+
+    p {
+        font-size: 2rem;
+    }
+}
+
+.danger-message {
+    background-color: $red;
+}

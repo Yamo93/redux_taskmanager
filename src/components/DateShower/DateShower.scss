@@ -1,0 +1,21 @@
+.todolist {
+
+    &__date {
+        padding: 1.5rem 2.5rem;
+        border-bottom: .5px solid rgba(0, 0, 0, .2);
+    
+        &-title {
+            color: #203A43;
+    
+            span {
+                font-weight: normal;
+            }
+        }
+    }
+
+    &__month {
+        font-size: 1.6rem;
+        font-weight: normal;
+        opacity: .7;
+    }
+}
