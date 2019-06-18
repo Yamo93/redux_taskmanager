@@ -49,9 +49,9 @@ class TodoList extends Component {
 
 const mapStateToProps = state => {
     return {
-        message: state.message,
-        success: state.success,
-        modalShown: state.modalShown
+        message: state.tsk.message,
+        success: state.tsk.success,
+        modalShown: state.mdl.modalShown
     };
 };
 

@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducer';
+// import reducer from './store/reducers/reducer';
+import taskReducer from './store/reducers/tasks';
+import modalReducer from './store/reducers/modal';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(reducer, 
+const rootReducer = combineReducers({
+    tsk: taskReducer,
+    mdl: modalReducer
+});
+
+const store = createStore(rootReducer, 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
