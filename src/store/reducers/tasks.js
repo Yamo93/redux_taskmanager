@@ -1,4 +1,4 @@
-import * as actionTypes from'../actionTypes';
+import * as actionTypes from'../actions/actionTypes';
 
 const initialState = {
     tasks: [],
@@ -30,6 +30,20 @@ const reducer = (state = initialState, action) => {
                     message: "Task successfully deleted.",
                     tasks: state.tasks.filter(task => {
                         return task.id !== action.task.id;
+                    })
+                };
+            case actionTypes.REGISTER_TASK_AS_DONE:
+                return {
+                    ...state,
+                    tasks: state.tasks.map(task => {
+                        if (task.id !== action.task.id) {
+                            return task; // its not what we look after
+                        }
+
+                        return {
+                            ...task,
+                            done: true
+                        };
                     })
                 };
 

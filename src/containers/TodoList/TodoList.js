@@ -7,7 +7,8 @@ import Message from '../../components/Message/Message';
 import Tasks from '../Tasks/Tasks';
 import AddTaskBtn from '../../components/AddTaskBtn/AddTaskBtn';
 import AddModal from '../AddModal/AddModal';
-import * as actionTypes from '../../store/actionTypes';
+// import * as actionTypes from '../../store/actions/actionTypes';
+import * as actionCreators from '../../store/actions/index';
 
 
 class TodoList extends Component {
@@ -57,8 +58,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onShowModal: () => dispatch({type: actionTypes.SHOW_MODAL}),
-        onHideModal: () => dispatch({type: actionTypes.HIDE_MODAL})
+        onShowModal: () => dispatch(actionCreators.showModal()),
+        onHideModal: () => dispatch(actionCreators.hideModal())
     };
 }
 

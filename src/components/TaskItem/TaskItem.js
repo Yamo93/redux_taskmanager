@@ -3,7 +3,7 @@ import './TaskItem.scss';
 
 const TaskItem = (props) => {
     return (
-        <div className="task">
+        <div className="task" onClick={(task) => props.registerDone(props.task)}>
             <div className="task__icon">
                 <i className="far fa-check-square"></i>
                 {/* <i class="fas fa-check-square"></i> */}

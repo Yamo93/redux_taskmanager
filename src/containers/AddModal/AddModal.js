@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './AddModal.scss';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actionTypes';
+// import * as actionTypes from '../../store/actions/actionTypes';
+import * as actionCreators from '../../store/actions/index';
 import uuid from 'uuid';
 
 class AddModal extends Component {
@@ -9,7 +10,8 @@ class AddModal extends Component {
     state = {
         task: {
             text: '',
-            id: null
+            id: null,
+            done: false
         }
     }
 
@@ -18,14 +20,12 @@ class AddModal extends Component {
     }
 
     addTaskHandler = (event, task) => {
-        console.log(event.type);
         if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
             this.props.onAddTask(this.state.task);
             if (this.state.task.text !== '') {
                 this.props.onHideModal();
             }
         }
-        
 
     }
 
@@ -33,7 +33,8 @@ class AddModal extends Component {
         this.setState({
             task: {
                 text: event.target.value,
-                id: uuid.v1()
+                id: uuid.v1(),
+                done: false
             }
         })
     }
@@ -60,8 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddTask: (task) => dispatch({type: actionTypes.ADD_TASK, task: task}),
-        onHideModal: () => dispatch({type: actionTypes.HIDE_MODAL})
+        onAddTask: (task) => dispatch(actionCreators.addTask(task)),
+        onHideModal: () => dispatch(actionCreators.hideModal())
     };
 };
 
