@@ -21,7 +21,7 @@ class AddModal extends Component {
 
     addTaskHandler = (event, task) => {
         if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
-            this.props.onAddTask(this.state.task);
+            this.props.onStoreTask(this.state.task);
             if (this.state.task.text !== '') {
                 this.props.onHideModal();
             }
@@ -62,6 +62,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAddTask: (task) => dispatch(actionCreators.addTask(task)),
+        onStoreTask: task => dispatch(actionCreators.storeTask(task)),
         onHideModal: () => dispatch(actionCreators.hideModal())
     };
 };

@@ -1,7 +1,10 @@
+@import '../../utilities/mixins.scss';
+
 .modal {
     // display: none;
     width: 30%;
-    height: 20vh;
+    height: 25%;
+    min-height: 175px;
     background-color: #59C173;
     box-shadow: 1.5px 2px 3.5px rgba(0, 0, 0, .4);
     padding: 3rem;
@@ -10,6 +13,18 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 20;
+
+    @include mediaquery(950px) {
+      width: 45%;
+    }
+
+    @include mediaquery(500px) {
+      width: 55%;
+    }
+
+    @include mediaquery(400px) {
+      width: 70%;
+    }
 
     &__title {
         font-size: 1.8rem;

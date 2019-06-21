@@ -1,6 +1,8 @@
 export { addTask,
     deleteTask,
-    registerTaskAsDone 
+    registerTaskAsDone,
+    hideMessage,
+    storeTask
 } from './tasks';
 
 export { showModal, 

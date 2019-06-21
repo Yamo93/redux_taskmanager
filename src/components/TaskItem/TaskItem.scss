@@ -28,6 +28,15 @@
         }
     }
 
+    &__text {
+
+    }
+
+    .done {
+        text-decoration: line-through;
+        opacity: .7;
+    }
+
     &__deletebtn {
         cursor: pointer;
         margin-left: auto;

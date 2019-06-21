@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-// import reducer from './store/reducers/reducer';
+import thunk from 'redux-thunk';
 import taskReducer from './store/reducers/tasks';
 import modalReducer from './store/reducers/modal';
 import './index.css';
@@ -29,7 +29,7 @@ const logger = store => {
 };
 
 const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(logger)
+    applyMiddleware(logger, thunk)
 ));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

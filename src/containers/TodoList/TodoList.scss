@@ -1,3 +1,5 @@
+@import '../../utilities/mixins.scss';
+
 .todolist {
     width: 50%;
     height: 55vh;
@@ -6,4 +8,16 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+
+    @include mediaquery(700px) {
+      width: 80%;
+    }
+
+    @include mediaquery(500px) {
+      width: 90%;
+    }
+
+    @include mediaquery(400px) {
+      width: 95%;
+    }
 }

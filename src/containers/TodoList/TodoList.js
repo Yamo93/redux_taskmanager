@@ -12,6 +12,9 @@ import * as actionCreators from '../../store/actions/index';
 
 
 class TodoList extends Component {
+    componentDidUpdate() {
+        setTimeout(() => this.props.onHideMessage(), 4000);
+    }
 
     hideModalHandler = () => {
         this.props.onHideModal();
@@ -23,16 +26,18 @@ class TodoList extends Component {
 
     render() {
 
+        let message = null;
+
+        if (this.props.message) {
+            message = <Message shown={true} message={this.props.message} isSuccessful={this.props.success} />;
+        } else {
+            message = <Message shown={false} message={this.props.message} isSuccessful={this.props.success} />;
+        }
+
         let modal = null;
 
         if (this.props.modalShown) {
             modal = <AddModal modalState={this.props.modalShown} />;
-        }
-
-        let message = null;
-
-        if (this.props.message) {
-            message = <Message message={this.props.message} isSuccessful={this.props.success} />;
         }
         
         return (
@@ -59,7 +64,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onShowModal: () => dispatch(actionCreators.showModal()),
-        onHideModal: () => dispatch(actionCreators.hideModal())
+        onHideModal: () => dispatch(actionCreators.hideModal()),
+        onHideMessage: () => dispatch(actionCreators.hideMessage())
     };
 }
 

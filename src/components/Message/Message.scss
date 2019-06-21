@@ -1,4 +1,5 @@
 @import '../../utilities/variables.scss';
+@import '../../utilities/mixins.scss';
 
 .message {
     position: absolute;
@@ -11,6 +12,16 @@
     padding: 2rem 3rem;
     z-index: 20;
     box-shadow: rgba(0, 0, 0, .3);
+    transition: all .6s;
+    opacity: 1;
+
+    @include mediaquery(500px) {
+      width: 85%;
+    }
+
+    @include mediaquery(400px) {
+      width: 95%;
+    }
 
     p {
         font-size: 2rem;
@@ -19,4 +30,8 @@
 
 .danger-message {
     background-color: $red;
+}
+
+.hidden {
+    opacity: 0;
 }
