@@ -47,6 +47,18 @@ const registerTaskAsDone = (state, action) => {
     });
 };
 
+const getTasks = (state, action) => {
+    return updateObject(state, {
+        tasks: [...action.tasks]
+    });
+};
+
+const loadTasks = (state, action) => {
+    return updateObject(state, {
+        tasks: [...action.tasks]
+    });
+}
+
 const hideMessage = (state, action) => {
     return updateObject(state, { message: null });
 };
@@ -60,6 +72,11 @@ const reducer = (state = initialState, action) => {
         case actionTypes.REGISTER_TASK_AS_DONE: return registerTaskAsDone(state, action);
         
         case actionTypes.HIDE_MESSAGE: return hideMessage(state, action);
+
+        case actionTypes.GET_TASKS: return getTasks(state, action);
+
+        case actionTypes.LOAD_TASKS: return loadTasks(state, action);
+
         default: return state;
     }
 };

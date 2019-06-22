@@ -7,6 +7,11 @@ import * as actionCreators from '../../store/actions/index';
 
 class Tasks extends Component {
 
+    componentDidMount() {
+        this.props.onGetTasks();
+        console.log(this.props.tasks);
+    }
+
     deleteTaskHandler = (task) => {
         this.props.onDeleteTask(task);
     }
@@ -32,7 +37,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddTask: () => dispatch(actionCreators.addTask()),
         onDeleteTask: (task) => dispatch(actionCreators.deleteTask(task)),
-        onRegisterTaskAsDone: (task) => dispatch(actionCreators.registerTaskAsDone(task))
+        onRegisterTaskAsDone: (task) => dispatch(actionCreators.registerTaskAsDone(task)),
+        onGetTasks: () => dispatch(actionCreators.getTasks())
     };
 };
 

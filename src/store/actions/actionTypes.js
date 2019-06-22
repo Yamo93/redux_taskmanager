@@ -1,5 +1,7 @@
 export const ADD_TASK = 'ADD_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
+export const GET_TASKS = 'GET_TASKS';
+export const LOAD_TASKS = 'LOAD_TASKS';
 
 export const REGISTER_TASK_AS_DONE = 'REGISTER_TASK_AS_DONE';
 

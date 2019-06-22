@@ -1,6 +1,7 @@
 export { addTask,
     deleteTask,
     registerTaskAsDone,
+    getTasks,
     hideMessage,
     storeTask
 } from './tasks';

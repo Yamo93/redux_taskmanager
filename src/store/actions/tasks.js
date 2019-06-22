@@ -29,11 +29,51 @@ export const hideMessage = () => {
 };
 
 export const storeTask = (task) => {
+    /***
+     * You can try the following solution:
+     * 1) Once you send the new task to the server. You then get it back. 
+     * Update: I think I realized that it doesn't return the actual thing back. All it does is returning back the ID. Nothing more than that. And that's all I really need. And you can actually find it in "response.data.name".
+     * 2) And once you get it back, you reformat the task so that it contains the id inside of it and not as a key.
+     * 3) Then you save that in the store with the firebase id ready. So, in the Redux store: it already has the firebase id directly.
+     */
     return dispatch => {
         axios.post('https://redux-task-manager-353c9.firebaseio.com/tasks.json', task)
         .then(response => {
-            console.log('Response from async code: ' + response);
-            dispatch(addTask(task));
+            
+            let newTask = {
+                    ...task,
+                    id: response.data.name
+                };
+
+            dispatch(addTask(newTask));
         });
     };
 };
+
+export const loadTasks = (tasks) => {
+    return {
+        type: actionTypes.LOAD_TASKS,
+        tasks: tasks
+    };
+};
+
+export const getTasks = () => {
+    return dispatch => {
+        axios.get('https://redux-task-manager-353c9.firebaseio.com/tasks.json')
+        .then(response => {
+            let tasks = [];
+            for (let i in response.data) {
+                let task = {
+                    ...response.data[i],
+                    firebaseID: i
+                };
+                tasks.push(task);
+            }
+
+            dispatch(loadTasks(tasks));
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    };
+}
