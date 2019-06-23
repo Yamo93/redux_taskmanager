@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './AddModal.scss';
 import { connect } from 'react-redux';
-// import * as actionTypes from '../../store/actions/actionTypes';
 import * as actionCreators from '../../store/actions/index';
-import uuid from 'uuid';
 
 class AddModal extends Component {
     // Made more sense to use local state here than Redux. Using Redux for this is overkill.
@@ -33,7 +31,7 @@ class AddModal extends Component {
         this.setState({
             task: {
                 text: event.target.value,
-                id: uuid.v1(),
+                id: null,
                 done: false
             }
         })

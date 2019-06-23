@@ -13,7 +13,7 @@ class Tasks extends Component {
     }
 
     deleteTaskHandler = (task) => {
-        this.props.onDeleteTask(task);
+        this.props.onDeleteTaskFromDB(task);
     }
 
 
@@ -37,6 +37,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddTask: () => dispatch(actionCreators.addTask()),
         onDeleteTask: (task) => dispatch(actionCreators.deleteTask(task)),
+        onDeleteTaskFromDB: (task) => dispatch(actionCreators.deleteTaskFromDB(task)),
         onRegisterTaskAsDone: (task) => dispatch(actionCreators.registerTaskAsDone(task)),
         onGetTasks: () => dispatch(actionCreators.getTasks())
     };

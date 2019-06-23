@@ -1,5 +1,6 @@
 export { addTask,
     deleteTask,
+    deleteTaskFromDB,
     registerTaskAsDone,
     getTasks,
     hideMessage,
