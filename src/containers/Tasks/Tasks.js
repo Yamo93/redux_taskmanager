@@ -21,7 +21,8 @@ class Tasks extends Component {
 
         return (
             <div className="tasks">
-                {this.props.tasks.map(task => <TaskItem deleted={(task) => this.deleteTaskHandler(task)} key={task.id} id={task.id} task={task} registerDone={this.props.onRegisterTaskAsDone} />)}
+                {/* <Spinner /> */}
+                {this.props.tasks.map(task => <TaskItem deleted={(task) => this.deleteTaskHandler(task)} key={task.id} id={task.id} task={task} registerDone={(task) => this.props.onStoreDoneTask(task)} />)}
             </div>
         );
     }
@@ -39,6 +40,7 @@ const mapDispatchToProps = dispatch => {
         onDeleteTask: (task) => dispatch(actionCreators.deleteTask(task)),
         onDeleteTaskFromDB: (task) => dispatch(actionCreators.deleteTaskFromDB(task)),
         onRegisterTaskAsDone: (task) => dispatch(actionCreators.registerTaskAsDone(task)),
+        onStoreDoneTask: (task) => dispatch(actionCreators.storeDoneTask(task)),
         onGetTasks: () => dispatch(actionCreators.getTasks())
     };
 };

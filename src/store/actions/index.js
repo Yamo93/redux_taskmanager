@@ -1,7 +1,9 @@
 export { addTask,
+    startSpinner,
     deleteTask,
     deleteTaskFromDB,
     registerTaskAsDone,
+    storeDoneTask,
     getTasks,
     hideMessage,
     storeTask

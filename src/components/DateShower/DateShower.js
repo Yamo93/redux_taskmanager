@@ -1,6 +1,8 @@
 import React from 'react';
 import './DateShower.scss';
 
+import Spinner from '../Spinner/Spinner';
+
 const DateShower = (props) => {
     let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -24,10 +26,17 @@ const DateShower = (props) => {
             suffix = 'th';
     }
 
+    let spinner = null;
+
+    if (props.loading) {
+        spinner = <Spinner />;
+    }
+
     return (
         <div className="todolist__date">
             <h1 className="todolist__date-title">{currentDay}, <span>{currentDate + suffix}</span></h1>
             <h2 className="todolist__month">{currentMonth}, {currentYear}</h2>
+            {spinner}
         </div>
     );
 };

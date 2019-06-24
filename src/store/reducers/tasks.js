@@ -4,7 +4,12 @@ import { updateObject } from '../../shared/utilities';
 const initialState = {
     tasks: [],
     success: false,
-    message: null
+    message: null,
+    loading: false
+};
+
+const startSpinner = (state, action) => {
+    return updateObject(state, { loading: true });
 };
 
 const addTask = (state, action) => {
@@ -18,7 +23,8 @@ const addTask = (state, action) => {
     return updateObject(state, {
         success: true,
         message: "Task successfully added.",
-        tasks: state.tasks.concat(action.task)
+        tasks: state.tasks.concat(action.task),
+        loading: false
     });
 };
 
@@ -26,6 +32,7 @@ const deleteTask = (state, action) => {
     return updateObject(state, {
         success: false,
         message: "Task successfully deleted.",
+        loading: false,
         tasks: state.tasks.filter(task => {
             return task.id !== action.task.id;
         })
@@ -33,6 +40,7 @@ const deleteTask = (state, action) => {
 };
 
 const registerTaskAsDone = (state, action) => {
+    console.log('hey from reducer');
     return updateObject(state, {
         tasks: state.tasks.map(task => {
             if (task.id !== action.task.id) {
@@ -49,13 +57,15 @@ const registerTaskAsDone = (state, action) => {
 
 const getTasks = (state, action) => {
     return updateObject(state, {
-        tasks: [...action.tasks]
+        tasks: [...action.tasks],
+        loading: false
     });
 };
 
 const loadTasks = (state, action) => {
     return updateObject(state, {
-        tasks: [...action.tasks]
+        tasks: [...action.tasks],
+        loading: false
     });
 }
 
@@ -68,6 +78,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD_TASK: return addTask(state, action);
 
         case actionTypes.DELETE_TASK: return deleteTask(state, action);
+
+        case actionTypes.START_SPINNER: return startSpinner(state, action);
 
         case actionTypes.REGISTER_TASK_AS_DONE: return registerTaskAsDone(state, action);
         

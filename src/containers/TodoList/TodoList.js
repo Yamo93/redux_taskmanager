@@ -7,9 +7,7 @@ import Message from '../../components/Message/Message';
 import Tasks from '../Tasks/Tasks';
 import AddTaskBtn from '../../components/AddTaskBtn/AddTaskBtn';
 import AddModal from '../AddModal/AddModal';
-// import * as actionTypes from '../../store/actions/actionTypes';
 import * as actionCreators from '../../store/actions/index';
-
 
 class TodoList extends Component {
     componentDidUpdate() {
@@ -44,7 +42,7 @@ class TodoList extends Component {
             <div className="todolist">
                 {message}
                 <Backdrop clicked={this.hideModalHandler} modalState={this.props.modalShown} />
-                <DateShower />
+                <DateShower loading={this.props.loading} />
                 <Tasks />
                 <AddTaskBtn clicked={this.showModalHandler} />
                 {modal}
@@ -57,7 +55,8 @@ const mapStateToProps = state => {
     return {
         message: state.tsk.message,
         success: state.tsk.success,
-        modalShown: state.mdl.modalShown
+        modalShown: state.mdl.modalShown,
+        loading: state.tsk.loading
     };
 };
 

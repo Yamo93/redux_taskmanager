@@ -8,6 +8,12 @@ export const addTask = (task) => {
     };
 };
 
+export const startSpinner = () => {
+    return {
+        type: actionTypes.START_SPINNER
+    };
+};
+
 export const deleteTask = (task) => {
     return {
         type: actionTypes.DELETE_TASK, 
@@ -16,9 +22,30 @@ export const deleteTask = (task) => {
 };
 
 export const registerTaskAsDone = (task) => {
+    let newTask = {...task};
+    console.log(newTask);
     return {
         type: actionTypes.REGISTER_TASK_AS_DONE,
-        task: task
+        task: newTask
+    };
+};
+
+export const storeDoneTask = (task) => {
+    return dispatch => {
+        let newTask = {
+            ...task,
+            done: !task.done
+        };
+
+        axios.put('https://redux-task-manager-353c9.firebaseio.com/tasks/' + task.id + '.json', newTask)
+        .then(response => {
+            console.log(response);
+            dispatch(registerTaskAsDone(response.data));
+            // Damn! I sat wondering for so long why the action wasnt dispatched. Then the thought hit me, well duh: you haven't called the dispatch function! :'D
+        })
+        .catch(error => {
+            console.log(error);
+        });
     };
 };
 
@@ -31,6 +58,7 @@ export const hideMessage = () => {
 export const deleteTaskFromDB = (task) => {
 
     return dispatch => {
+        dispatch(startSpinner());
         axios.delete('https://redux-task-manager-353c9.firebaseio.com/tasks/' + task.id + '.json')
         .then(response => {
             console.log(response);
@@ -46,6 +74,7 @@ export const deleteTaskFromDB = (task) => {
 export const storeTask = (task) => {
 
     return dispatch => {
+        dispatch(startSpinner());
         axios.post('https://redux-task-manager-353c9.firebaseio.com/tasks.json', task)
         .then(response => {
             
@@ -68,6 +97,7 @@ export const loadTasks = (tasks) => {
 
 export const getTasks = () => {
     return dispatch => {
+        dispatch(startSpinner());
         axios.get('https://redux-task-manager-353c9.firebaseio.com/tasks.json')
         .then(response => {
             let tasks = [];
