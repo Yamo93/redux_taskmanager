@@ -39,9 +39,7 @@ export const storeDoneTask = (task) => {
 
         axios.put('https://redux-task-manager-353c9.firebaseio.com/tasks/' + task.id + '.json', newTask)
         .then(response => {
-            console.log(response);
             dispatch(registerTaskAsDone(response.data));
-            // Damn! I sat wondering for so long why the action wasnt dispatched. Then the thought hit me, well duh: you haven't called the dispatch function! :'D
         })
         .catch(error => {
             console.log(error);

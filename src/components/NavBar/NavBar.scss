@@ -1,0 +1,56 @@
+@import '../../utilities/variables.scss';
+
+.navbar {
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7rem;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, .4);
+
+    ul {
+        display: flex;
+
+        li {
+            padding: 0 1.5rem;
+
+            a {
+                &::after {
+                    content: '';
+                    display: block;
+                    background-color: $green;
+                    width: 100%;
+                    width: 0;
+                    height: 2px;
+                    transform: translateY(3px);
+                    transition: width .3s;
+                }
+
+                &:hover {
+                    &::after {
+                        content: '';
+                        display: block;
+                        background-color: $green;
+                        width: 100%;
+                        // width: 0;
+                        height: 2px;
+                        transform: translateY(3px);
+                    }
+                }
+            }
+        }
+
+        .active {
+            &::after {
+                content: '';
+                display: block;
+                background-color: $green;
+                width: 100%;
+                // width: 0;
+                height: 2px;
+                transform: translateY(3px);
+            }
+        }
+    }
+}
