@@ -17,6 +17,7 @@ const rootReducer = combineReducers({
     mdl: modalReducer
 });
 
+/*
 const logger = store => {
     return next => {
         return action => {
@@ -27,9 +28,10 @@ const logger = store => {
         }
     }
 };
+*/
 
 const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(logger, thunk)
+    applyMiddleware(thunk)
 ));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

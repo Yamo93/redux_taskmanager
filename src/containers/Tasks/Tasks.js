@@ -9,7 +9,6 @@ class Tasks extends Component {
 
     componentDidMount() {
         this.props.onGetTasks();
-        console.log(this.props.tasks);
     }
 
     deleteTaskHandler = (task) => {

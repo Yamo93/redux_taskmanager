@@ -12,3 +12,5 @@ export { addTask,
 export { showModal, 
     hideModal 
 } from './modal';
+
+export { auth } from './auth';
