@@ -1,4 +1,5 @@
 import axios from 'axios';
+import apiConfig from '../../apiKeys';
 
 export const auth = (email, password, isSignup) => {
     return dispatch => { // thunking!
@@ -8,7 +9,7 @@ export const auth = (email, password, isSignup) => {
             returnSecureToken: true
         };
 
-        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyCb4_fBufI7bBzIO4mZHehklxomfFq5y0A';
+        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' + apiConfig.googleKey;
 
         axios.post(url, authData)
         .then(response => {
