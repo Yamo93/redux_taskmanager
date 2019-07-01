@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
 import NavBar from './components/NavBar/NavBar';
@@ -11,8 +11,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <NavBar />
-        <Route path="/" exact component={TodoList} />
-        <Route path="/auth" exact component={Auth} />
+        
+        <Switch>
+          <Route path="/" exact component={TodoList} />
+          <Route path="/login" exact component={() => <Auth signup={false} />} />
+          <Route path="/signup" exact component={() => <Auth signup={true} />} />
+        </Switch>
         {/* <TodoList /> */}
       </div>
     </BrowserRouter>

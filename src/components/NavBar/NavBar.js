@@ -9,7 +9,7 @@ const navBar = (props) => {
             <ul>
                 <li><NavLink to="/" exact>Home</NavLink></li>
                 <li><NavLink to="/login">Login</NavLink></li>
-                <li><NavLink to="/auth">Sign Up</NavLink></li>
+                <li><NavLink to="/signup">Sign Up</NavLink></li>
             </ul>
         </nav>
     );

@@ -13,4 +13,4 @@ export { showModal,
     hideModal 
 } from './modal';
 
-export { auth } from './auth';
+export { auth, setAuthRedirectPath } from './auth';
