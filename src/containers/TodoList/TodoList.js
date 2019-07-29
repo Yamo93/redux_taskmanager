@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './TodoList.scss';
 import Backdrop from '../../components/Backdrop/Backdrop';
@@ -37,14 +38,16 @@ class TodoList extends Component {
         if (this.props.modalShown) {
             modal = <AddModal modalState={this.props.modalShown} />;
         }
+
+        let alert = <h2 className="alertmsg">You're not signed in. Please <Link to="/signup">sign up</Link> if you don't have an account, or <Link to="/login">log in</Link>.</h2>;
         
         return (
             <div className="todolist">
                 {message}
                 <Backdrop clicked={this.hideModalHandler} modalState={this.props.modalShown} />
                 <DateShower loading={this.props.loading} />
-                <Tasks />
-                <AddTaskBtn clicked={this.showModalHandler} />
+                {this.props.isSignedIn ? <Tasks /> : alert}
+                {this.props.isSignedIn ? <AddTaskBtn clicked={this.showModalHandler} /> : null}
                 {modal}
             </div>
         );
@@ -56,7 +59,8 @@ const mapStateToProps = state => {
         message: state.tsk.message,
         success: state.tsk.success,
         modalShown: state.mdl.modalShown,
-        loading: state.tsk.loading
+        loading: state.tsk.loading,
+        isSignedIn: state.auth.token !== null
     };
 };
 

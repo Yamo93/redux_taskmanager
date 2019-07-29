@@ -32,7 +32,8 @@ class AddModal extends Component {
             task: {
                 text: event.target.value,
                 id: null,
-                done: false
+                done: false,
+                userId: localStorage.getItem('userId')
             }
         })
     }

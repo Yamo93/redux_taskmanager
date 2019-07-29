@@ -100,11 +100,13 @@ export const getTasks = () => {
         .then(response => {
             let tasks = [];
             for (let i in response.data) {
-                let task = {
-                    ...response.data[i],
-                    id: i
-                };
-                tasks.push(task);
+                if (response.data[i].userId === localStorage.getItem('userId')) {
+                    let task = {
+                        ...response.data[i],
+                        id: i
+                    };
+                    tasks.push(task);
+                }
             }
 
             dispatch(loadTasks(tasks));

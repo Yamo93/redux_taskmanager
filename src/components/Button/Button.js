@@ -9,7 +9,7 @@ const button = (props) => {
         classes.push(props.class);
     }
     return (
-        <button className={classes.join(' ')}>{props.children}</button>
+        <button className={classes.join(' ')} type="submit">{props.children}</button>
     );
 };
 

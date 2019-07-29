@@ -8,8 +8,8 @@ const navBar = (props) => {
         <nav className="navbar">
             <ul>
                 <li><NavLink to="/" exact>Home</NavLink></li>
-                <li><NavLink to="/login">Login</NavLink></li>
-                <li><NavLink to="/signup">Sign Up</NavLink></li>
+    <li>{props.signedin ? <NavLink to="/logout">Logout</NavLink> : <NavLink to="/login">Login</NavLink>}</li>
+                {!props.signedin ? <li><NavLink to="/signup">Sign Up</NavLink></li> : null}
             </ul>
         </nav>
     );
